@@ -15,7 +15,7 @@ puts "x ** 100 -> #{x ** 100}"   # -> ruby puede maneja numeros grandes sin prob
 
 
 # Flotante
-x = 100.0
+x = 101.0
 puts "x -> #{x}"
 puts "x.class -> #{x.class}"
 

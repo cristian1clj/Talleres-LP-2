@@ -18,7 +18,7 @@ end
 
 # For
 puts "For"
-for i in 1..5 do        # -> for valor in lista
+for i in 1..5 do        # -> for valor in array
     puts "i -> #{i}"
 end
 
