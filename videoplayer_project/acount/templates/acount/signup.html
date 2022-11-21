@@ -1,0 +1,44 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/indexStyles.css' %}">
+<nav>
+    <div class="navbar-left">
+        <ul>
+            <li><a href="{% url 'home:index' %}">HOME</a></li>
+            <div class="navbar-search">
+                <form action="#">
+                    {% csrf_token %}
+                    <input 
+                        type="text"
+                        placeholder="Search videos"
+                        name="videoSameSearch"
+                    >
+                    <input type="submit" value="search">
+                </form>
+            </div>
+        </ul>
+    </div>
+    <div class="navbar-right">
+        
+    </div>
+</nav>
+
+<section class="main-container">
+    <form action="{% url 'acount:signuprecord' %}" method="post">
+        {% csrf_token %}
+        <fieldset>
+            <legend><h1>Sign in</h1></legend>
+
+            <label for="username">Username:</label>
+            <input type="text" name="username" id="username">
+
+            <label for="email_address">Email:</label>
+            <input type="email" name="email_address" id="email_address">
+
+            <label for="password">Password:</label>
+            <input type="password" name="password" id="password">
+        </fieldset>
+        <input type="submit" value="Submit">
+    </form>
+
+    <p>If you already have an account, <a href="{% url 'acount:login' %}">Log in</a></p>
+</section>

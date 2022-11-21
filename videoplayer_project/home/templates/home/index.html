@@ -1,0 +1,48 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/indexStyles.css' %}">
+<nav>
+    <div class="navbar-left">
+        <ul>
+            <li><a href="{% url 'home:index' %}">HOME</a></li>
+            <div class="navbar-search">
+                <form action="#">
+                    {% csrf_token %}
+                    <input 
+                        type="text"
+                        placeholder="Search videos"
+                        name="videoSameSearch"
+                    >
+                    <input type="submit" value="search">
+                </form>
+            </div>
+        </ul>
+    </div>
+    <div class="navbar-right">
+        <ul>
+            {% if acount_id %}
+                <li><a href="">{{ user.name }}</a></li>
+                <li><a href="">Log out</a></li>
+            {% else %}
+                <li><a href="{% url 'acount:login' %}">Log in</a></li>
+                <li><a href="{% url 'acount:signup' %}">Sign up</a></li>
+            {% endif %}
+        </ul>
+    </div>
+</nav>
+
+<section class="main-container">
+    {% if videos_list %}
+        {% for video in videos_list %}
+            <a href="{% url 'home:detail' video.id %}">
+                <div class="cards-container">
+                    <video height="100" width="200">
+                        <source src="{{ video.path }}" type="video/mp4">
+                    </video>
+                    <h6>{{ video.title }}</h6>
+                </div>
+            </a>
+        {% endfor %}
+    {% else %}
+        <h3>No videos are avaiable. :(</h3>
+    {% endif %}
+</section>
