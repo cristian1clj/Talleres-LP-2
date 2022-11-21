@@ -18,10 +18,13 @@ def index(request):
 def detail(request, video_id):
     video_selected = get_object_or_404(Video, id=video_id)
     videos_list = Video.objects.filter(~Q(id=video_id))
+    comments_list = video_selected.comment_set.all()
+    
     template = 'home/detail.html'
     context = {
         'video_selected': video_selected, 
         'videos_list': videos_list, 
+        'comments_list': comments_list, 
     }
     
     return HttpResponse(render(request, template, context))
@@ -31,11 +34,13 @@ def search(request):
     video_title = request.GET['search-navbar']
     video_searched = get_object_or_404(Video, title=video_title)
     videos_list = Video.objects.filter(~Q(id=video_searched.id))
+    comments_list = video_searched.comment_set.all()
     
     template = 'home/detail.html'
     context = {
         'video_selected': video_searched, 
         'videos_list': videos_list, 
+        'comments_list': comments_list, 
     }
     
     return HttpResponse(render(request, template, context))
