@@ -14,3 +14,15 @@ class Video(models.Model):
     
     def __str__(self) -> str:
         return self.title
+    
+
+class Comment(models.Model):
+    # owner = models.ForeignKey(User, on_delete=models.CASCADE)
+    video = models.ForeignKey(Video, on_delete=models.CASCADE)
+    comment_text = models.CharField(max_length=700)
+    pub_date = models.DateTimeField(auto_now_add=True)
+    like = models.IntegerField(default=0)
+    dislike = models.IntegerField(default=0)
+    
+    
+

@@ -5,12 +5,13 @@
         <ul>
             <li><a href="{% url 'home:index' %}">HOME</a></li>
             <div class="navbar-search">
-                <form action="#">
+                <form action="{% url 'home:search' %}">
                     {% csrf_token %}
                     <input 
                         type="text"
                         placeholder="Search videos"
-                        name="videoSameSearch"
+                        name="search-navbar"
+                        id="search-navbar"
                     >
                     <input type="submit" value="search">
                 </form>
