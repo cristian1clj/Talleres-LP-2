@@ -1,0 +1,5 @@
+{% for member in members reversed %}
+    <p>Hello {{ member.firstname }}, how are you?</p>
+{% empty %}
+    <p>No members</p>
+{% endfor %}

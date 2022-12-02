@@ -34,14 +34,21 @@
 <section class="main-container">
     {% if videos_list %}
         {% for video in videos_list %}
-            <a href="{% url 'home:detail' video.id %}">
-                <div class="cards-container">
-                    <video height="100" width="200">
-                        <source src="{{ video.path }}" type="video/mp4">
-                    </video>
-                    <h6>{{ video.title }}</h6>
-                </div>
-            </a>
+            <div class="cards-container">
+                <a href="{% url 'home:detail' video.id %}">
+                    <div class="video-card">
+                        <video height="140" width="240">
+                            <source src="{{ video.path }}" type="video/mp4">
+                        </video>
+                        
+                        <div class="video-info">
+                            <div>
+                                <p>{{ video.title }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
         {% endfor %}
     {% else %}
         <h3>No videos are avaiable. :(</h3>

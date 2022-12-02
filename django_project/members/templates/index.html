@@ -1,0 +1,17 @@
+<h1>Members</h1>
+
+<table border="1">
+    {% for member in mymembers %}
+    <tr>
+        <td>{{ member.id }}</td>
+        <td>{{ member.firstname }}</td>
+        <td>{{ member.lastname }}</td>
+        <td><a href="update/{{ member.id }}">update</a></td>
+        <td><a href="delete/{{ member.id }}">delete</a></td>
+    </tr>
+    {% endfor %}
+</table>
+
+<p>
+    <a href="add/">Add member</a>
+</p>
